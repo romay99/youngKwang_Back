@@ -1,6 +1,8 @@
 package com.romay.youngkwang.api.controller;
 
 import com.romay.youngkwang.api.service.APIService;
+import com.romay.youngkwang.common.ResponseDTO;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,9 +18,9 @@ public class APIController {
     }
 
     @GetMapping("/nowPlaying") // 현재 상영작 리스트 받아오기
-    public String getNowPlayingMovieList () {
-        apiService.getNowPlaying();
+    public void getNowPlayingMovieList () {
+//        System.out.println(apiService.getNowPlaying());
 
-        return "";
+
     }
 }
