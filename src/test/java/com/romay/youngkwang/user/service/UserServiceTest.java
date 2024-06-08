@@ -1,0 +1,41 @@
+package com.romay.youngkwang.user.service;
+
+import com.romay.youngkwang.user.dto.UserSignUpDTO;
+import com.romay.youngkwang.user.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.transaction.annotation.Transactional;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+@SpringBootTest
+@ExtendWith(SpringExtension.class)
+@Transactional
+class UserServiceTest {
+
+    @Autowired private UserService userService;
+    @Autowired private UserRepository userRepository;
+
+    @Test
+    public void 회원가입() throws Exception {
+        //given
+        UserSignUpDTO dto = new UserSignUpDTO();
+        dto.setName("이수빈");
+        dto.setPassword("123456");
+        dto.setSex("남자");
+        dto.setBirthdate("1990-01-01");
+        dto.setEmail("wjfkwf@naver.com");
+
+        //when
+        Long savedUserId = userService.saveUser(dto);
+
+        //then
+        // DTO 의 userName 과 DB에 저장된 UserEntity 의 이름이 같으면 성공
+        assertEquals(dto.getName(), userRepository.findById(savedUserId).get().getUserName());
+    }
+
+}

@@ -1,8 +1,6 @@
 package com.romay.youngkwang.api.controller;
 
 import com.romay.youngkwang.api.service.APIService;
-import com.romay.youngkwang.common.ResponseDTO;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
