@@ -1,9 +1,11 @@
-package com.romay.youngkwang.board.domain;
+package com.romay.youngkwang.comment.domain;
 
+import com.romay.youngkwang.board.domain.Board;
 import com.romay.youngkwang.user.domain.User;
 import jakarta.persistence.*;
 import lombok.Getter;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -18,7 +20,7 @@ public class BoardComment {
     private String boardCommentContent;
 
     @Column(name = "board_comment_date")
-    private Date boardCommentDate;
+    private LocalDate boardCommentDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "board_code")

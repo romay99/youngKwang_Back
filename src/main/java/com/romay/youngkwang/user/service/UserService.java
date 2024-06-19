@@ -1,7 +1,7 @@
 package com.romay.youngkwang.user.service;
 
 import com.romay.youngkwang.user.domain.User;
-import com.romay.youngkwang.user.dto.UserSignUpDTO;
+import com.romay.youngkwang.user.dto.request.UserSignUpDTO;
 import com.romay.youngkwang.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

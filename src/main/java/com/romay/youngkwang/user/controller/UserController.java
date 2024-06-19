@@ -1,6 +1,6 @@
 package com.romay.youngkwang.user.controller;
 
-import com.romay.youngkwang.user.dto.UserSignUpDTO;
+import com.romay.youngkwang.user.dto.request.UserSignUpDTO;
 import com.romay.youngkwang.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

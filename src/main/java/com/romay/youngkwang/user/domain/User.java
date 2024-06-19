@@ -1,9 +1,10 @@
 package com.romay.youngkwang.user.domain;
 
-import com.romay.youngkwang.user.dto.UserSignUpDTO;
+import com.romay.youngkwang.user.dto.request.UserSignUpDTO;
 import jakarta.persistence.*;
 import lombok.Getter;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -22,11 +23,11 @@ public class User {
     @Column(name = "user_password")
     private String userPassword;
     @Column(name = "user_reg_date")
-    private Date userRegDate;
+    private LocalDate userRegDate;
     @Column(name = "user_sex")
     private boolean userSex;
     @Column(name = "user_birthdate")
-    private Date userBirthday;
+    private LocalDate userBirthday;
     @Column(name = "user_is_social")
     private boolean userIsSocial;
 
@@ -44,8 +45,8 @@ public class User {
         user.userName = "test";
         user.userEmail = "test@romay.com";
         user.userPassword = "test";
-        user.userRegDate = new Date();
-        user.userBirthday = new Date();
+        user.userRegDate = LocalDate.now();
+        user.userBirthday = LocalDate.now();
         user.userIsSocial = false;
         user.userRole = UserRole.USER;
         user.userSex = true;
@@ -64,7 +65,7 @@ public class User {
         // user.userBirthday = dto.getBirthdate();
         user.userRole = UserRole.USER;
         user.userIsSocial = false;
-        user.userRegDate = new Date();
+        user.userRegDate = LocalDate.now();
 
         return user;
     }

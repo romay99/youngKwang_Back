@@ -1,4 +1,4 @@
-package com.romay.youngkwang.user.dto;
+package com.romay.youngkwang.user.dto.request;
 
 import lombok.Getter;
 import lombok.Setter;

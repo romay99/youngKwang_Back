@@ -1,8 +1,7 @@
 package com.romay.youngkwang.user.service;
 
-import com.romay.youngkwang.user.dto.UserSignUpDTO;
+import com.romay.youngkwang.user.dto.request.UserSignUpDTO;
 import com.romay.youngkwang.user.repository.UserRepository;
-import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;

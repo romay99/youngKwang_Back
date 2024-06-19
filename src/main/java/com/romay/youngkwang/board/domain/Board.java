@@ -4,6 +4,7 @@ import com.romay.youngkwang.user.domain.User;
 import jakarta.persistence.*;
 import lombok.Getter;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -22,13 +23,13 @@ public class Board {
     private String boardContent;
 
     @Column(name = "board_date")
-    private Date boardDate;
+    private LocalDate boardDate;
 
     @Column(name = "board_view")
     private Long boardView;
 
     @JoinColumn(name = "user_code")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private User user;
 
     // 조회수 추가 로직
