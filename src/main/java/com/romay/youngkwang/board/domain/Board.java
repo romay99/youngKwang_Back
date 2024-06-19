@@ -29,7 +29,7 @@ public class Board {
     private Long boardView;
 
     @JoinColumn(name = "user_code")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
     // 조회수 추가 로직
