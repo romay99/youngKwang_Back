@@ -1,4 +1,4 @@
-package com.romay.youngkwang.comment.domain;
+package com.romay.youngkwang.boardComment.domain;
 
 import com.romay.youngkwang.board.domain.Board;
 import com.romay.youngkwang.user.domain.User;
@@ -6,7 +6,6 @@ import jakarta.persistence.*;
 import lombok.Getter;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 @Table(name = "board_comment")
