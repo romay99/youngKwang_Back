@@ -3,10 +3,6 @@ package com.romay.youngkwang.board.controller;
 import com.romay.youngkwang.board.dto.response.BoardResponseDTO;
 import com.romay.youngkwang.board.service.BoardService;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,7 +23,6 @@ public class BoardController {
     }
 
     @GetMapping("/home")
-    @ApiImplicitParam(name = "ㅇㅇ")
     @ApiResponse(description = "자유게시판 게시물 목록 불러오는 기능")
     public ResponseEntity<?> boardHome() {
         List<BoardResponseDTO> boardList = boardService.getBoardList();
