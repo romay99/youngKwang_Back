@@ -40,9 +40,9 @@ public class User {
     /**
      * 테스트용 유저 생성 메서드
      */
-    public static User createTestUser() {
+    public static User createTestUser(Long userCode) {
         User user = new User();
-        user.userCode = 1L;
+        user.userCode = userCode;
         user.userName = "test";
         user.userEmail = "test@romay.com";
         user.userPassword = "test";

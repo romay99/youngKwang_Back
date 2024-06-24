@@ -2,14 +2,19 @@ package com.romay.youngkwang.board.domain;
 
 import com.romay.youngkwang.user.domain.User;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 @Table(name = "board")
 @Getter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Board {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,7 +46,6 @@ public class Board {
         this.boardView --;
     }
 
-    // 테스트용 게시글 생성 메서드
 
 
 }
