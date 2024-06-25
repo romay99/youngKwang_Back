@@ -13,7 +13,6 @@ import java.util.Date;
 public class BoardResponseDTO {
     private Long boardCode;
     private String boardTitle;
-    private String boardContent;
     private LocalDate boardDate;
     private Long boardView;
     private String userNickName;

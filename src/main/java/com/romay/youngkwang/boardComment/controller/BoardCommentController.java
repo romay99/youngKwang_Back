@@ -22,11 +22,4 @@ public class BoardCommentController {
         this.boardCommentService = boardCommentService;
     }
 
-    @GetMapping("/view")
-    @ApiResponse(responseCode = "200",description = "한 게시물의 댓글들의 리스트를 반환",content =
-    @Content(schema = @Schema(implementation = BoardCommentResponseDTO.class)))
-    public ResponseEntity<?> getBoardComment(@RequestParam("board") Long boardCode) {
-        List<BoardCommentResponseDTO> boardComments = boardCommentService.getBoardComments(boardCode);
-        return ResponseEntity.ok(boardComments);
-    }
 }
