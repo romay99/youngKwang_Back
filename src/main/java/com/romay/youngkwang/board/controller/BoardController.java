@@ -4,7 +4,6 @@ import com.romay.youngkwang.board.dto.request.BoardPostDTO;
 import com.romay.youngkwang.board.dto.response.BoardDetailViewDTO;
 import com.romay.youngkwang.board.dto.response.BoardResponseDTO;
 import com.romay.youngkwang.board.service.BoardService;
-import com.romay.youngkwang.boardComment.dto.response.BoardCommentResponseDTO;
 import com.romay.youngkwang.boardComment.service.BoardCommentService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -27,7 +26,7 @@ public class BoardController {
     private final BoardService boardService;
     private final BoardCommentService boardCommentService;
 
-    @PostMapping("/post")
+    @PostMapping("/board")
     @Operation(summary = "자유게시판 글작성", description = "자유게시판 글작성 기능입니다")
     @ApiResponse(responseCode = "200", description = "글작성 성공시 200")
     public ResponseEntity<?> postBoard(@RequestBody BoardPostDTO DTO) {
@@ -44,7 +43,7 @@ public class BoardController {
         return ResponseEntity.ok().body(boardList);
     }
 
-    @GetMapping("/view")
+    @GetMapping("/board")
     @Operation(summary = "게시물 상세 조회",description = "자유게시판 글 상세페이지입니다. ")
     @ApiResponse(responseCode = "200",description = "게시물의 내용과 댓글들을 List 로 응답해줍니다."
     ,content = @Content(schema = @Schema(implementation = BoardDetailViewDTO.class)))

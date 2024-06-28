@@ -44,7 +44,7 @@ public class User {
         User user = new User();
         user.userCode = userCode;
         user.userName = "test";
-        user.userEmail = "test@romay.com";
+        user.userEmail = "test@tmp.com";
         user.userPassword = "test";
         user.userRegDate = LocalDate.now();
         user.userBirthday = LocalDate.now();

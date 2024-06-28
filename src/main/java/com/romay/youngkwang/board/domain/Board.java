@@ -46,6 +46,13 @@ public class Board {
         this.boardView --;
     }
 
+    //임시 Board 엔티티 리턴하는 메서드
+    public static Board createTempBoard(Long boardCode) {
+        Board board = new Board();
+        board.boardCode = boardCode;
+        return board;
+    }
+
 
 
 }

@@ -29,4 +29,17 @@ public class BoardComment {
     @JoinColumn(name = "user_code")
     private User user;
 
+    /**
+     * 댓글 작성 메서드
+     */
+    public static BoardComment createBoardComment(Long boardCode, Long userCode,String boardCommentContent) {
+        BoardComment boardComment = new BoardComment();
+        boardComment.boardCommentContent = boardCommentContent;
+        boardComment.boardCommentDate = LocalDate.now();
+        boardComment.board = Board.createTempBoard(boardCode);
+        boardComment.user = User.createTestUser(userCode);
+
+        return boardComment;
+    }
+
 }
