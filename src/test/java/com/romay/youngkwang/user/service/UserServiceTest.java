@@ -37,4 +37,5 @@ class UserServiceTest {
         assertEquals(dto.getName(), userRepository.findById(savedUserId).get().getUserName());
     }
 
+
 }

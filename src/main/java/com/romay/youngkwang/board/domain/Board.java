@@ -33,6 +33,9 @@ public class Board {
     @Column(name = "board_view")
     private Long boardView;
 
+    @Column(name = "board_recommend")
+    private int boardRecommend;
+
     @JoinColumn(name = "user_code")
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
