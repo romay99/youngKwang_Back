@@ -14,9 +14,11 @@ public class GetBadge {
 
     private LocalDateTime getBadgeDate;
 
-    @OneToMany
-    private List<User> user;
+    @ManyToOne
+    @JoinColumn(name = "user_code")
+    private User userCode;
 
-    @OneToMany
-    private List<Badge> badge;
+    @ManyToOne
+    @JoinColumn(name = "badge_Code")
+    private Badge badgeCode;
 }

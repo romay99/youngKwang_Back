@@ -9,6 +9,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -25,8 +27,8 @@ class UserServiceTest {
         UserSignUpDTO dto = new UserSignUpDTO();
         dto.setName("이수빈");
         dto.setPassword("123456");
-        dto.setSex("남자");
-        dto.setBirthdate("1990-01-01");
+        dto.setSex(true);
+        dto.setBirthdate(LocalDate.now());
         dto.setEmail("wjfkwf@naver.com");
 
         //when

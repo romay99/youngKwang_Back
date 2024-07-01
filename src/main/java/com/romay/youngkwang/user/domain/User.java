@@ -1,5 +1,6 @@
 package com.romay.youngkwang.user.domain;
 
+import com.romay.youngkwang.badge.domain.Badge;
 import com.romay.youngkwang.user.dto.request.UserSignUpDTO;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -32,6 +33,9 @@ public class User {
     @Column(name = "user_is_social")
     private boolean userIsSocial;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    private Badge badgeCode;
+
     @Column(name = "user_role")
     @Enumerated(EnumType.STRING)
     private UserRole userRole;
@@ -62,8 +66,8 @@ public class User {
         user.userEmail = dto.getEmail();
         user.userName = dto.getName();
         user.userPassword = dto.getPassword();
-        // user.userSex = dto.getSex()  TODO 불리안으로 변경
-        // user.userBirthday = dto.getBirthdate();
+        user.userSex = dto.isSex();
+        user.userBirthday = dto.getBirthdate();
         user.userRole = UserRole.USER;
         user.userIsSocial = false;
         user.userRegDate = LocalDate.now();
