@@ -33,7 +33,8 @@ public class User {
     @Column(name = "user_is_social")
     private boolean userIsSocial;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "equip_badge")
     private Badge badgeCode;
 
     @Column(name = "user_role")
