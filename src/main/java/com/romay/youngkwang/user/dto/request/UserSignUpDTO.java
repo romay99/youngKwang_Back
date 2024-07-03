@@ -12,6 +12,7 @@ import java.time.LocalDate;
 public class UserSignUpDTO {
     private String email;
     private String name;
+    private String nickName;
     private String password;
     private boolean sex;
     private LocalDate birthdate;

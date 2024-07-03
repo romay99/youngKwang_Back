@@ -2,6 +2,7 @@ package com.romay.youngkwang.board.service;
 
 import com.romay.youngkwang.board.domain.Board;
 import com.romay.youngkwang.board.dto.request.BoardPostDTO;
+import com.romay.youngkwang.board.dto.request.BoardSearchDTO;
 import com.romay.youngkwang.board.dto.response.BoardDetailViewDTO;
 import com.romay.youngkwang.board.dto.response.BoardResponseDTO;
 import com.romay.youngkwang.board.repository.BoardRepository;
@@ -69,5 +70,18 @@ public class BoardService {
 
         boardRepository.save(boardEntity);
 
+    }
+
+    public List<BoardResponseDTO> searchBoards(BoardSearchDTO boardSearchDTO) {
+        List<Board> boardList = boardRepository.searchBoardWithFilter(boardSearchDTO);
+        return boardList.stream().map(
+                entity -> BoardResponseDTO.builder()
+                        .boardTitle(entity.getBoardTitle())
+                        .boardCode(entity.getBoardCode())
+                        .boardDate(entity.getBoardDate())
+                        .boardView(entity.getBoardView())
+                        .userNickName(entity.getUser().getUserNickName())
+                        .build())
+                .toList();
     }
 }

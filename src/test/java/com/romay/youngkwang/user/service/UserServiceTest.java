@@ -2,6 +2,7 @@ package com.romay.youngkwang.user.service;
 
 import com.romay.youngkwang.user.dto.request.UserSignUpDTO;
 import com.romay.youngkwang.user.repository.UserRepository;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,7 @@ class UserServiceTest {
     @Autowired private UserService userService;
     @Autowired private UserRepository userRepository;
 
+    @DisplayName("회원가입")
     @Test
     public void 회원가입() throws Exception {
         //given
@@ -30,6 +32,7 @@ class UserServiceTest {
         dto.setSex(true);
         dto.setBirthdate(LocalDate.now());
         dto.setEmail("wjfkwf@naver.com");
+        dto.setNickName("로메이123");
 
         //when
         Long savedUserId = userService.saveUser(dto);
@@ -38,6 +41,5 @@ class UserServiceTest {
         // DTO 의 userName 과 DB에 저장된 UserEntity 의 이름이 같으면 성공
         assertEquals(dto.getName(), userRepository.findById(savedUserId).get().getUserName());
     }
-
 
 }

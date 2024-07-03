@@ -72,6 +72,7 @@ public class User {
         user.userRole = UserRole.USER;
         user.userIsSocial = false;
         user.userRegDate = LocalDate.now();
+        user.userNickName = dto.getNickName();
 
         return user;
     }

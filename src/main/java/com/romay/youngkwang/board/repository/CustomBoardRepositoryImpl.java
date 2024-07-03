@@ -40,10 +40,10 @@ public class CustomBoardRepositoryImpl implements CustomBoardRepository {
         return board.boardTitle.contains(title);
     }
     BooleanExpression userNameFilter(BoardSearchDTO boardSearchDTO) {
-        String userName = boardSearchDTO.getUserName();
-        if (userName == null) {
+        String userNickName = boardSearchDTO.getUserNickName();
+        if (userNickName == null) {
             return null;
         }
-        return board.user.userName.eq(userName);
+        return board.user.userNickName.eq(userNickName);
     }
 }
