@@ -8,6 +8,7 @@ import com.romay.youngkwang.board.dto.response.BoardResponseDTO;
 import com.romay.youngkwang.board.repository.BoardRepository;
 import com.romay.youngkwang.boardComment.service.BoardCommentService;
 import com.romay.youngkwang.user.domain.User;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -25,8 +26,8 @@ public class BoardService {
     }
 
     // 게시물 전체 조회
-    public List<BoardResponseDTO> getBoardList() {
-        return boardRepository.findAll().stream()
+    public List<BoardResponseDTO> getBoardList(Pageable pageable) {
+        return boardRepository.findAll(pageable).stream()
                 .map(entity -> BoardResponseDTO.builder()
                         .boardTitle(entity.getBoardTitle())
                         .boardCode(entity.getBoardCode())

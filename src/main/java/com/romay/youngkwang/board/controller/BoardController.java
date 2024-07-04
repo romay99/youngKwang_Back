@@ -5,13 +5,14 @@ import com.romay.youngkwang.board.dto.request.BoardSearchDTO;
 import com.romay.youngkwang.board.dto.response.BoardDetailViewDTO;
 import com.romay.youngkwang.board.dto.response.BoardResponseDTO;
 import com.romay.youngkwang.board.service.BoardService;
-import com.romay.youngkwang.boardComment.service.BoardCommentService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springdoc.core.annotations.ParameterObject;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,8 +39,8 @@ public class BoardController {
     @Operation(summary = "자유게시판 홈", description = "자유게시판 글 조회")
     @ApiResponse(responseCode = "200", description = "성공시 JSON 들의 리스트를 응답",
             content = @Content(schema = @Schema(implementation = BoardResponseDTO.class)))
-    public ResponseEntity<?> boardHome() {
-        List<BoardResponseDTO> boardList = boardService.getBoardList();
+    public ResponseEntity<?> boardHome(@ParameterObject Pageable pageable) {
+        List<BoardResponseDTO> boardList = boardService.getBoardList(pageable);
         return ResponseEntity.ok().body(boardList);
     }
 

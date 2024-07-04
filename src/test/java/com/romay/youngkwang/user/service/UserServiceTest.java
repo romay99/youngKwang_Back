@@ -24,7 +24,7 @@ class UserServiceTest {
 
     @DisplayName("회원가입")
     @Test
-    public void 회원가입() throws Exception {
+    public void signUpUser() throws Exception {
         //given
         UserSignUpDTO dto = new UserSignUpDTO();
         dto.setName("이수빈");
@@ -38,7 +38,6 @@ class UserServiceTest {
         Long savedUserId = userService.saveUser(dto);
 
         //then
-        // DTO 의 userName 과 DB에 저장된 UserEntity 의 이름이 같으면 성공
         assertEquals(dto.getName(), userRepository.findById(savedUserId).get().getUserName());
     }
 
