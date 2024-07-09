@@ -12,7 +12,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @JsonIgnoreProperties({"dates","page","total_pages","total_results"})
-public class MovieDetailDTO {
+public class NowPlayingJsonDTO {
 
     private List<Movie> results;
 

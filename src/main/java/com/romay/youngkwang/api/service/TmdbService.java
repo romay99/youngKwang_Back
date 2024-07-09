@@ -2,7 +2,7 @@ package com.romay.youngkwang.api.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.romay.youngkwang.api.dto.response.MovieDetailDTO;
+import com.romay.youngkwang.api.dto.response.NowPlayingJsonDTO;
 import com.romay.youngkwang.api.dto.response.NowPlayingMoviesResponseDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -29,7 +29,7 @@ public class TmdbService {
 
         String response = restTemplate.getForObject(url, String.class);
         try {
-            MovieDetailDTO movieDetailDTO = objectMapper.readValue(response, MovieDetailDTO.class);
+            NowPlayingJsonDTO movieDetailDTO = objectMapper.readValue(response, NowPlayingJsonDTO.class);
 
             return movieDetailDTO.getResults().stream().map(entity->
                     NowPlayingMoviesResponseDTO.builder()
