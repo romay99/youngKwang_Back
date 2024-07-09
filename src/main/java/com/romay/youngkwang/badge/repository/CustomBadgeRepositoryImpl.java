@@ -27,7 +27,7 @@ public class CustomBadgeRepositoryImpl implements CustomBadgeRepository {
         if(badgeSearchFilterDTO.getBadgeName() == null) {
             return null;
         }
-        return badge.badgeCategory.contains(badgeSearchFilterDTO.getBadgeName());
+        return badge.badgeName.contains(badgeSearchFilterDTO.getBadgeName());
     }
     private BooleanExpression categoryFilter(BadgeSearchFilterDTO badgeSearchFilterDTO) {
         if(badgeSearchFilterDTO.getBadgeCategory() == null) {

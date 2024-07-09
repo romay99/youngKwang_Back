@@ -19,10 +19,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@Tag(name = "게시판")
+@Tag(name = "게시판",description = "게시판 관련 기능입니다")
 @RequestMapping("/board")
 @RequiredArgsConstructor
-@CrossOrigin("http://localhost:3000")
 public class BoardController {
 
     private final BoardService boardService;

@@ -7,11 +7,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RestController
-@Tag(name = "자유게시판 댓글")
-@RequestMapping("/board/comment")
+@Tag(name = "자유게시판 댓글",description = "자유게시판에 댓글 관련 기능입니다")
+@RequestMapping("/boardComment")
 @RequiredArgsConstructor
 public class BoardCommentController {
 

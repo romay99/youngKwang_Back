@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/user")
 @CrossOrigin("http://localhost:3000")
 @RequiredArgsConstructor
-@Tag(name = "유저 관련 기능")
+@Tag(name = "유저",description = "유저 관련 기능입니다")
 public class UserController {
 
     private final UserService userService;
