@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
@@ -39,27 +40,26 @@ public class BoardService {
 
     // 게시물 상세 조회
     public BoardDetailViewDTO getBoardDetail(Long boardCode) {
-        System.out.println("boardCode = " + boardCode);
         Optional<Board> boardEntity = boardRepository.findById(boardCode);
-        if (boardEntity.isPresent()) {
-            BoardDetailViewDTO boardDetailViewDTO = new BoardDetailViewDTO();
-            Board board = boardEntity.get();
-            boardDetailViewDTO.setBoardTitle(board.getBoardTitle());
-            boardDetailViewDTO.setBoardCode(board.getBoardCode());
-            boardDetailViewDTO.setBoardContent(board.getBoardContent());
-            boardDetailViewDTO.setBoardDate(board.getBoardDate());
-            boardDetailViewDTO.setBoardViewCount(board.getBoardView());
-            boardDetailViewDTO.setUserName(board.getUser().getUserNickName());
-            boardDetailViewDTO.setBoardCommentList(boardCommentService.getBoardComments(boardCode));
+        boardEntity.orElseThrow(()-> new NoSuchElementException("게시물이 존재하지 않습니다."));
 
-            return boardDetailViewDTO;
-        }
-        return null;
+        BoardDetailViewDTO boardDetailViewDTO = new BoardDetailViewDTO();
+        Board board = boardEntity.get();
+        boardDetailViewDTO.setBoardTitle(board.getBoardTitle());
+        boardDetailViewDTO.setBoardCode(board.getBoardCode());
+        boardDetailViewDTO.setBoardContent(board.getBoardContent());
+        boardDetailViewDTO.setBoardDate(board.getBoardDate());
+        boardDetailViewDTO.setBoardViewCount(board.getBoardView());
+        boardDetailViewDTO.setUserName(board.getUser().getUserNickName());
+        boardDetailViewDTO.setBoardCommentList(boardCommentService.getBoardComments(boardCode));
+
+        return boardDetailViewDTO;
     }
 
     //자유게시판 글쓰기
-    public void postBoard(BoardPostDTO DTO) {
-        Long userCode = 1L; // 임시 유저코드 토큰에서 가져오는걸로 바꿔야함.
+    public Long postBoard(BoardPostDTO DTO) {
+         // 유저코드 토큰에서 가져오는걸로 바꿔야함.
+        Long userCode = 1L;
 
         Board boardEntity = Board.builder()
                 .boardView(0L)
@@ -70,6 +70,7 @@ public class BoardService {
                 .build();
 
         boardRepository.save(boardEntity);
+        return boardEntity.getBoardCode();
 
     }
 

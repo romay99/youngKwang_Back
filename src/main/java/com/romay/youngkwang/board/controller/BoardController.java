@@ -51,9 +51,6 @@ public class BoardController {
     @ApiResponse(responseCode = "404", description = "boardCode 에 매칭되는 게시물이 존재하지 않을시 404 코드를 응답합니다.")
     public ResponseEntity<?> boardView(@RequestParam Long boardCode) {
         BoardDetailViewDTO boardDetail = boardService.getBoardDetail(boardCode);
-        if (boardDetail == null) {
-            return ResponseEntity.notFound().build();
-        }
         return ResponseEntity.ok().body(boardDetail);
     }
 

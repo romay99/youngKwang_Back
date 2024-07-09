@@ -2,16 +2,14 @@ package com.romay.youngkwang.board.domain;
 
 import com.romay.youngkwang.user.domain.User;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "board")
 @Getter
+@Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor

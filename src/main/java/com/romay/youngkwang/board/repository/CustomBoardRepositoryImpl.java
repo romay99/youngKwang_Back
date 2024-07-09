@@ -25,21 +25,21 @@ public class CustomBoardRepositoryImpl implements CustomBoardRepository {
                 .fetch();
     }
 
-    BooleanExpression contentFilter(BoardSearchDTO boardSearchDTO) {
+    private BooleanExpression contentFilter(BoardSearchDTO boardSearchDTO) {
         String content = boardSearchDTO.getContent();
         if (content == null) {
             return null;
         }
         return board.boardContent.contains(content);
     }
-    BooleanExpression titleFilter(BoardSearchDTO boardSearchDTO) {
+    private BooleanExpression titleFilter(BoardSearchDTO boardSearchDTO) {
         String title = boardSearchDTO.getTitle();
         if (title == null) {
             return null;
         }
         return board.boardTitle.contains(title);
     }
-    BooleanExpression userNameFilter(BoardSearchDTO boardSearchDTO) {
+    private BooleanExpression userNameFilter(BoardSearchDTO boardSearchDTO) {
         String userNickName = boardSearchDTO.getUserNickName();
         if (userNickName == null) {
             return null;
