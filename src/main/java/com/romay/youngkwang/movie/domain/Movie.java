@@ -22,4 +22,6 @@ public class Movie {
     private LocalDate movieReleaseDate;
     @Column
     private String moviePosterUrl;
+    @Column
+    private int movieRuntime;
 }
