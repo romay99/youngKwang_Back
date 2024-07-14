@@ -11,7 +11,8 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-@JsonIgnoreProperties({"dates","page","total_pages","total_results"})
+//@JsonIgnoreProperties({"dates","page","total_pages","total_results"})
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class NowPlayingJsonDTO {
 
     private List<Movie> results;

@@ -11,9 +11,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @NoArgsConstructor
-@JsonIgnoreProperties({"adult","backdrop_path","belongs_to_collection","budget","genres","homepage","imdb_id","origin_country"
-,"original_language","original_title","popularity","production_companies","production_countries","revenue","spoken_languages","status",
-"tagline","video","vote_average","vote_count"})
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class MovieDetailJsonDTO {
     private String id;
     private String overview;

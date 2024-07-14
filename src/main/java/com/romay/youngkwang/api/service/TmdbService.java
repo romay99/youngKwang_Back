@@ -1,7 +1,5 @@
 package com.romay.youngkwang.api.service;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.romay.youngkwang.api.dto.response.MovieDetailJsonDTO;
 import com.romay.youngkwang.api.dto.response.NowPlayingJsonDTO;
 import com.romay.youngkwang.api.dto.response.NowPlayingMoviesResponseDTO;
@@ -49,5 +47,9 @@ public class TmdbService {
         MovieDetailJsonDTO response = restTemplate.getForObject(url, MovieDetailJsonDTO.class);
 
         return response;
+    }
+
+    public void getMovieWithTitle(String title) {
+        String endPoint = "";
     }
 }

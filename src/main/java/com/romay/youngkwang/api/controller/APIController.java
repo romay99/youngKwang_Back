@@ -3,7 +3,6 @@ package com.romay.youngkwang.api.controller;
 import com.romay.youngkwang.api.dto.response.MovieDetailJsonDTO;
 import com.romay.youngkwang.api.dto.response.NowPlayingMoviesResponseDTO;
 import com.romay.youngkwang.api.service.TmdbService;
-import com.romay.youngkwang.board.dto.response.BoardResponseDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -32,13 +31,22 @@ public class APIController {
         return ResponseEntity.ok(dtoList);
     }
 
-    @GetMapping("/movie")
+    @GetMapping("/movie/detail")
     @Operation(summary = "영화 상세정보", description = "영화의 상세 정보 조회하기")
     @ApiResponse(responseCode = "200", description = "영화의 상세 정보를 return 해줍니다",
             content = @Content(schema = @Schema(implementation = MovieDetailJsonDTO.class)))
     public ResponseEntity<?> getMovie(@RequestParam("id") int movieCode) {
         MovieDetailJsonDTO movieDetail = tmdbService.getMovieDetail(movieCode);
         return ResponseEntity.ok(movieDetail);
+    }
+
+    @GetMapping("/movie/search")
+    @Operation(summary = "영화 제목으로검색", description = "영화의 제목으로 검색합니다")
+    @ApiResponse(responseCode = "200", description = "제목에 맞는 영화들을 return 해줍니다",
+            content = @Content(schema = @Schema(implementation = MovieDetailJsonDTO.class)))
+    public ResponseEntity<?> searchMovieWithTitle(@RequestParam("title") String title) {
+        tmdbService.getMovieWithTitle(title);
+        return ResponseEntity.ok().build();
     }
 
 }
