@@ -17,7 +17,6 @@ import java.util.List;
 public class TmdbService {
 
     private final RestTemplate restTemplate;
-    private final ObjectMapper objectMapper;
 
     public List<NowPlayingMoviesResponseDTO> getNowPlayingMovies(int page) {
         String endPoint = "/movie/now_playing";
@@ -28,23 +27,17 @@ public class TmdbService {
                         .queryParam("page",page)
                         .toUriString();
 
-        String response = restTemplate.getForObject(url, String.class);
-        try {
-            NowPlayingJsonDTO movieDetailDTO = objectMapper.readValue(response, NowPlayingJsonDTO.class);
+        NowPlayingJsonDTO response = restTemplate.getForObject(url, NowPlayingJsonDTO.class);
 
-            return movieDetailDTO.getResults().stream().map(entity->
-                    NowPlayingMoviesResponseDTO.builder()
-                            .tmdbMovieCode(entity.getId())
-                            .movieTitle(entity.getTitle())
-                            .movieSynopsis(entity.getOverview())
-                            .movieReleaseDate(entity.getReleaseDate())
-                            .moviePosterUrl("https://image.tmdb.org/t/p/original/" + entity.getPosterPath())
-                            .build()
-                    ).toList();
-
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
-        }
+        return response.getResults().stream().map(entity->
+                NowPlayingMoviesResponseDTO.builder()
+                        .tmdbMovieCode(entity.getId())
+                        .movieTitle(entity.getTitle())
+                        .movieSynopsis(entity.getOverview())
+                        .movieReleaseDate(entity.getReleaseDate())
+                        .moviePosterUrl("https://image.tmdb.org/t/p/original/" + entity.getPosterPath())
+                        .build()
+                ).toList();
     }
 
     public MovieDetailJsonDTO getMovieDetail(int movieCode) {
@@ -53,13 +46,8 @@ public class TmdbService {
                 .queryParam("language","ko-KO")
                 .toUriString();
 
-        String response = restTemplate.getForObject(url, String.class);
-        try {
-            MovieDetailJsonDTO movieDetailDTO = objectMapper.readValue(response, MovieDetailJsonDTO.class);
-            return movieDetailDTO;
+        MovieDetailJsonDTO response = restTemplate.getForObject(url, MovieDetailJsonDTO.class);
 
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
-        }
+        return response;
     }
 }
