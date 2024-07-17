@@ -49,7 +49,24 @@ public class TmdbService {
         return response;
     }
 
-    public void getMovieWithTitle(String title) {
-        String endPoint = "";
+    public List<NowPlayingMoviesResponseDTO> getMovieWithTitle(String title) {
+        String endPoint = "/search/movie";
+        String url = UriComponentsBuilder.fromUriString(endPoint)
+                .queryParam("language", "ko-KO")
+                .queryParam("query",title)
+                .toUriString();
+
+        NowPlayingJsonDTO response = restTemplate.getForObject(url, NowPlayingJsonDTO.class);
+
+        return response.getResults().stream().map(entity->
+                NowPlayingMoviesResponseDTO.builder()
+                        .tmdbMovieCode(entity.getId())
+                        .movieTitle(entity.getTitle())
+                        .movieSynopsis(entity.getOverview())
+                        .movieReleaseDate(entity.getReleaseDate())
+                        .moviePosterUrl("https://image.tmdb.org/t/p/original/" + entity.getPosterPath())
+                        .build())
+                .toList();
+
     }
 }

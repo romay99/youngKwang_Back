@@ -43,10 +43,10 @@ public class APIController {
     @GetMapping("/movie/search")
     @Operation(summary = "영화 제목으로검색", description = "영화의 제목으로 검색합니다")
     @ApiResponse(responseCode = "200", description = "제목에 맞는 영화들을 return 해줍니다",
-            content = @Content(schema = @Schema(implementation = MovieDetailJsonDTO.class)))
+            content = @Content(schema = @Schema(implementation = NowPlayingMoviesResponseDTO.class)))
     public ResponseEntity<?> searchMovieWithTitle(@RequestParam("title") String title) {
-        tmdbService.getMovieWithTitle(title);
-        return ResponseEntity.ok().build();
+        List<NowPlayingMoviesResponseDTO> movieWithTitle = tmdbService.getMovieWithTitle(title);
+        return ResponseEntity.ok(movieWithTitle);
     }
 
 }
