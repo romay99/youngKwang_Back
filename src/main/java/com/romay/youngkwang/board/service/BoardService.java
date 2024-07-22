@@ -40,11 +40,9 @@ public class BoardService {
 
     // 게시물 상세 조회
     public BoardDetailViewDTO getBoardDetail(Long boardCode) {
-        Optional<Board> boardEntity = boardRepository.findById(boardCode);
-        boardEntity.orElseThrow(()-> new NoSuchElementException("게시물이 존재하지 않습니다."));
+        Board board = boardRepository.findById(boardCode).orElseThrow(()->new NoSuchElementException("게시물이 존재하지 않습니다."));
 
         BoardDetailViewDTO boardDetailViewDTO = new BoardDetailViewDTO();
-        Board board = boardEntity.get();
         boardDetailViewDTO.setBoardTitle(board.getBoardTitle());
         boardDetailViewDTO.setBoardCode(board.getBoardCode());
         boardDetailViewDTO.setBoardContent(board.getBoardContent());
