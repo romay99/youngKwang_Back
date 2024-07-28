@@ -30,7 +30,7 @@ public class SecurityConfig {
 
         http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/*").permitAll());
+                        .requestMatchers("/**").permitAll());
 
         http
                 .sessionManagement( session -> session

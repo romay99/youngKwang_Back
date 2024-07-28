@@ -15,6 +15,6 @@ public class UserSignUpDTO {
     private String nickName;
     private String password;
     private boolean sex;
-    private LocalDate birthdate;
+    private String birthdate;
 
 }

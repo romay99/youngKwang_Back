@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 @Entity
 @Getter
@@ -54,7 +55,7 @@ public class User {
         user.userRegDate = LocalDate.now();
         user.userBirthday = LocalDate.now();
         user.userIsSocial = false;
-        user.userRole = UserRole.USER;
+        user.userRole = UserRole.ROLE_USER;
         user.userSex = true;
         return user;
     }
@@ -68,8 +69,9 @@ public class User {
         user.userName = dto.getName();
         user.userPassword = dto.getPassword();
         user.userSex = dto.isSex();
-        user.userBirthday = dto.getBirthdate();
-        user.userRole = UserRole.USER;
+        LocalDate birthDate = LocalDate.parse(dto.getBirthdate(), DateTimeFormatter.ISO_DATE);
+        user.userBirthday = birthDate;
+        user.userRole = UserRole.ROLE_USER;
         user.userIsSocial = false;
         user.userRegDate = LocalDate.now();
         user.userNickName = dto.getNickName();
